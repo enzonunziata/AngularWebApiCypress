@@ -1,0 +1,27 @@
+<div *ngIf="products != null">
+  <div *ngIf="products.totalItems == 0">
+    <p data-cy="p-no-products">There are no products</p>
+  </div>
+
+  <div class="row" *ngFor="let product of products.items">
+    <div class="col-2">
+      <a [routerLink]="[productLink(product.code)]">{{ product.code }}</a>
+    </div>
+    <div class="col-2">{{ product.name }}</div>
+    <div class="col-2">{{ product.price | currency }}</div>
+  </div>
+
+  <nav class="mt-4" *ngIf="products.totalItems > 0">
+    <ul class="pagination pagination-sm">
+      <li
+        *ngFor="let x of counter(products.totalPages); let i = index"
+        class="page-item"
+        [class.active]="products.currentPage == i + 1"
+      >
+        <a class="page-link" [routerLink]="[paginationLink(i + 1)]">{{
+          i + 1
+        }}</a>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,10 @@
+<div class="mb-4 mt-2">
+  <p *ngIf="isLoggedIn">
+    You are logged in as
+    <strong>{{ fullname }}</strong> &nbsp;
+    <a href="javascript:void(0)" data-cy="logout-button" (click)="logout()"
+      >Logout</a
+    >
+  </p>
+  <p *ngIf="!isLoggedIn">You are currently not logged in.</p>
+</div>
